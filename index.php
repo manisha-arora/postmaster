@@ -1,6 +1,7 @@
 <?php
 // Let me put some comment here to make sure the change
 // we have done so far
+// having my third commit
 session_start();
 include('Engine'.DIRECTORY_SEPARATOR.'boot.php');
 $controller = get_input('controller', $CONFIG['site']['default_controller']).'Controller';
