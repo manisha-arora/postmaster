@@ -8,4 +8,5 @@ $controller = get_input('controller', $CONFIG['site']['default_controller']).'Co
 $action = get_input('action', 'index');
 $id = get_input('id');
 $controller_object = new $controller();
+// these changes are done by priya
 $controller_object->$action();
