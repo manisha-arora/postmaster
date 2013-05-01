@@ -1,4 +1,5 @@
 <?php
+//new comment
 require_once(dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 require_once('Database.php');
 require_once('ModelInterface.php');
