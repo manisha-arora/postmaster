@@ -1,4 +1,4 @@
-<?php
+<?php 
 class Controller{
   public $data = null;
 
@@ -11,7 +11,7 @@ class Controller{
     if(!$data){
      $data = $this->data;
     }
-    extract($data);
+    //extract($data);
     include($CONFIG['site']['app_path'].DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.$CONFIG['site']['page_shell']);
   } 
 }
