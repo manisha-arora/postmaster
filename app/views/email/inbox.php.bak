@@ -1,0 +1,17 @@
+<table>
+    <tr><th><input type="checkbox" name="email_id"></th>
+		<th>From</th>
+		<th>Subject</th>
+		<th>Date</th>
+		<th>Size</th>
+	</tr>	
+	<?php 
+       foreach($email as $val){?>
+	<tr><td><input type="checkbox" name="id_<?php  echo $val->id; ?>"></td>  
+        <td><img src="http://ballhankandskein.com/Include/Images/Email-Logo.jpg" height="25" width ="15"></td>
+		<td><?php echo $val->from_id; ?></td>
+        <td><?php echo $val->subject; ?></td>
+        <td><?php echo $val->created_on; ?></td>
+	</tr>
+        <?php } ?>
+</table>	
