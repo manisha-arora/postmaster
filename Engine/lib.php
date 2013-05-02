@@ -13,6 +13,12 @@ function web_root(){
   return $CONFIG['site']['web_root'];
 }
 
+function refresh_session_user(){
+  $user = new User();
+  $user_object_array = $user->get(array('id' => get_session_user()->id));
+  $_SESSION['is_user_logged_in'] = serialize($user_object_array[0]);
+}
+
 function forward($url){
   header("Location: $url");
   exit;
@@ -42,3 +48,26 @@ function return_message($type = 'success'){
   return $message_array;
 }
 
+function get_file_extentions($filename){
+  return end(explode(".",$filename));
+}
+
+function admin_gateway(){
+  return (get_session_user()->is_admin)?true:false;
+}
+
+// get_formatted_date('yyyy-m-d');
+function get_formatted_date($date){
+  $date_array = explode("-",$date);
+  $return_date['y'] = $date_array[0];
+  $return_date['m'] = $date_array[1];
+  $return_date['d'] = $date_array[2];
+  return $return_date;
+}
+
+// get_url(array('controller value','action value', 'id value'))
+
+function get_url($url_array){
+  $url_string = implode('/', $url_array);
+  return web_root().$url_string;
+}

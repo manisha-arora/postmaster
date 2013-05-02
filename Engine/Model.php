@@ -11,18 +11,6 @@ abstract class Model{
 		$this->db = new Database($connection_string);
   }
   
-  public function FindUser($params=array()){
-       if($params['username'] != 'username' && $params['password'] != 'password'){
-	      echo "<h3> Please Verify Username Or Password";
-	} 
-	   foreach($params as $column => $value){
-         $query_elements[] = "{$column} = '{$value}'";
-      }
-	     $where = implode(" and ", $query_elements); 
-	     $query = "SELECT * FROM {$this->table} where {$where}";
-          return $this->db->execute($query);
-  }
-  
   public function insert($params = array()){
     if(count($params)){
 	  foreach($params as $column => $value){

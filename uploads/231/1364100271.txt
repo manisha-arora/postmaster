@@ -1,0 +1,54 @@
+#include <windows.h>
+long CALLBACK WndProc(HWND hwnd,UINT Messg,WPARAM wparam,LPARAM lparam);
+char SzProgName[]="ProgName";
+int WINAPI WinMain(HINSTANCE hinst,HINSTANCE hpriminst,LPSTR lpszcmdline,int ncmdshow)
+{
+	HWND hwnd;
+	MSG lpmsg;
+	WNDCLASS WCAPP;
+	WCAPP.lpszClassName=SzProgName;
+	WCAPP.lpfnWndProc=WndProc;
+	WCAPP.hInstance=hinst;
+	WCAPP.hCursor=LoadCursor(NULL,IDC_ARROW);
+	WCAPP.hIcon=0;
+	WCAPP.lpszMenuName=0;
+	WCAPP.hbrBackground=(HBRUSH)GetStockObject(WHITE_BRUSH);
+	WCAPP.style=CS_HREDRAW|CS_VREDRAW;
+	WCAPP.cbWndExtra=0;
+	WCAPP.cbClsExtra=0;
+    RegisterClass(&WCAPP);
+	hwnd=CreateWindow(SzProgName,"Simple Program",WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,CW_USEDEFAULT,CW_USEDEFAULT,CW_USEDEFAULT,0,0,hinst,0);
+	ShowWindow(hwnd ,ncmdshow);
+	UpdateWindow(hwnd);
+	while(GetMessage(&lpmsg,0,0,0)==TRUE)
+	{
+		TranslateMessage(&lpmsg);
+		DispatchMessage(&lpmsg);
+	}
+	return(lpmsg.wParam);
+}
+long CALLBACK WndProc(HWND hwnd,UINT Messg,WPARAM wparam,LPARAM lparam)
+{
+	HDC hdc;
+	PAINTSTRUCT ps;
+switch(Messg)
+	{
+	case WM_PAINT:
+	hdc=BeginPaint(hwnd,&ps);
+	MoveToEx(hdc,0,0,NULL);
+	LineTo(hdc,639,429);
+	MoveToEx(hdc,300,0,NULL);
+	LineTo(hdc,50,300);
+	TextOut(hdc,120,30,"welcome frnds",17);
+	ValidateRect(hwnd,NULL);
+	EndPaint(hwnd,&ps);
+	break;
+    case WM_DESTROY:
+	PostQuitMessage(0);
+	break;
+	default:
+		return(DefWindowProc(hwnd,Messg,wparam,lparam));
+		break;
+	}
+	return(0);
+}

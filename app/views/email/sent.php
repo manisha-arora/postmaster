@@ -1,20 +1,35 @@
+<script>
+  function check_all(current_element){
+    current_form = current_element.form;
+    for(i=0;i<=current_form.length;i++){
+      frm_element = current_form.elements[i];
+      if(frm_element.type == 'checkbox'){
+        if(current_element.checked){
+         current_form.elements[i].checked = true;
+        }else{
+         current_form.elements[i].checked = false;
+        }
+      }
+    }
+  }
+</script>
 <div class="table">
-<form action="index.php?controller=email&action=delete" method="post">
-<table>
-      <tr><input type="submit" value="Move" name="form[action]"/><input type="submit" value="Delete" name="form[action]" /></tr>
-    <tr><th><input type="checkbox"></th>
-	    <th></th>
-		<th>To</th>
-		<th>Subject</th>
-		<th>Date</th>
-		<th>Size</th>
+<form action="<?php echo get_url(array('email','delete'))?>" method="post">
+<table width="100%">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr><input type="submit" value="Delete" name="form[action]" /></tr>
+	  <hr>
+    <tr><th width="16px"><input type="checkbox" name="email_id" onChange="check_all(this)" value=""></th>
+	    <th>&nbsp;</th>
+		<th align="left">To</th>
+		<th align="left">Subject</th>
+		<th align="left">Date</th>
 	</tr>	
 	<?php foreach($email as $val){?>
 	<tr><td><input type="checkbox" name="form[check_id][]" value="<?php echo $val->id; ?>"></td>  
-        <td><img src="http://ballhankandskein.com/Include/Images/Email-Logo.jpg" height="25" width ="15"></td>
-		<td><?php echo $val->to_id; ?></td>
-        <td><?php echo $val->subject; ?></td>
-        <td><?php echo $val->created_on; ?></td>
+        <td><img src="<?php echo ($val->attachment)?web_root().'images/attachment.png':web_root().'images/email.png'; ?>"></td>
+        <td> <a href="<?php echo get_url(array('user','viewUserInfo',$val->to_id))?>"><?php echo $val->fname.' '.$val->lname; ?></a></td>
+        <td> <a href="<?php echo get_url(array('email','showSentMessage',$val->id))?>"><?php echo $val->subject; ?></td>
+        <td><?php echo $val->getFormattedTime(); //$val->created_on; ?></td>
     </tr>
 <?php }?>
 </table>

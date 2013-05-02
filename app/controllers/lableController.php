@@ -3,12 +3,13 @@ class lableController extends Controller{
   
   public function __construct(){
     parent::__construct();
+    gateway();
     $this->data['window_title'] = 'Labels Management';
     $this->data['form_title']='Labels Management';
   }
   public function index(){
     $lab = new Lable();
-    $this->data['lables']=$lab->get();
+    $this->data['lables']=$lab->get(array('user_id' => get_session_user()->id));
     $this->render('lable/manage_labels.php');
    }
  
@@ -16,7 +17,7 @@ class lableController extends Controller{
     $form=get_input('form');
     if(empty($form['name'])){
       register_message("Name must be provided.","error");
-      forward('index.php?controller=lable');
+      forward(get_url(array('lable')));
     }
     $lable= new Lable();
     $data_array= array('name' => $form['name'], 'user_id' => get_session_user()->id);
@@ -25,7 +26,7 @@ class lableController extends Controller{
     }else{
       register_message("Some error in the database, Please try later.", 'error');
     }
-    forward('index.php?controller=lable');
+    forward(get_url(array('lable')));
     }
 
    public function edit(){
@@ -38,7 +39,7 @@ class lableController extends Controller{
        $data_array['name'] = $form['name'];
        if($lable->update($data_array,array('id' => $id))){
         register_message("Label has been updated successfully.");
-        forward("index.php?controller=lable");
+        forward(get_url(array('lable')));
        }
       }
 
@@ -46,7 +47,7 @@ class lableController extends Controller{
         $this->data['edit_lable'] = $lable->get(array('id' => $id));
       }
 
-      $this->data['lables']=$lable->get();
+      $this->data['lables']=$lable->get(array('user_id'=>get_session_user()->id));
       $this->render('lable/manage_labels.php');
    }
    
@@ -56,6 +57,6 @@ class lableController extends Controller{
     if($lable->delete(array('id'=>$id))){
       register_message("Label has been deleted successfully.");
     }
-    forward('index.php?controller=lable');
+    forward(get_url(array('lable')));
   }
 }

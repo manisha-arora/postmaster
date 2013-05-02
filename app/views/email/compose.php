@@ -1,10 +1,11 @@
-<form method="POST" enctype="multipart/form-data" action="index.php?controller=email&action=compose">
-<div class="table">
+<form method="POST" enctype="multipart/form-data" action="<?php echo get_url(array('email','compose'))?>"
+<div class="compose">
 <table>
     <tr><td>Users:</td><td>
      <select name="form[user_id]">
-      <?php foreach($users as $user){
-      echo '<option value="'.$user->id.'">'.$user->fullName().'</option>';
+	 <option value="<?php echo get_session_user()->id; ?>"><?php echo get_session_user()->fullName(); ?></option>
+      <?php foreach($request as $val){
+      echo '<option value="'.$val->id.'">'.$val->fname.' '.$val->lname .'</option>';
       } ?>
       </select>
     </td></tr>
