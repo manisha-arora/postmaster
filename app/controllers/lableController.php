@@ -14,11 +14,16 @@ class lableController extends Controller{
    }
  
     public function add(){
-    $form=get_input('form');
-    if(empty($form['name'])){
-      register_message("Name must be provided.","error");
+     $error=false;
+     $form=get_input('form');
+     if(isset($form['add_update'])){
+      if(empty($form['name'])){
+      register_message(" Lable Name must be provided.","error");
+	    $error=true;
+	   }
+	   if($error){
       forward(get_url(array('lable')));
-    }
+	   }
     $lable= new Lable();
     $data_array= array('name' => $form['name'], 'user_id' => get_session_user()->id);
     if($lable->insert($data_array)){
@@ -26,6 +31,7 @@ class lableController extends Controller{
     }else{
       register_message("Some error in the database, Please try later.", 'error');
     }
+  }
     forward(get_url(array('lable')));
     }
 
