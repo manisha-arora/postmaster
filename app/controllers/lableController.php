@@ -23,7 +23,7 @@ class lableController extends Controller{
 	  }
 	   if($error){
       forward(get_url(array('lable')));
-    }
+	   }
     $lable= new Lable();
     $data_array= array('name' => $form['name'], 'user_id' => get_session_user()->id);
     if($lable->insert($data_array)){
@@ -31,7 +31,11 @@ class lableController extends Controller{
     }else{
       register_message("Some error in the database, Please try later.", 'error');
     }
+<<<<<<< HEAD
    }
+=======
+  }
+>>>>>>> 4f02e9277d537289fbd9d73cd571d63de9e7ab75
     forward(get_url(array('lable')));
     }
 
