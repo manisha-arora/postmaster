@@ -1,4 +1,4 @@
-<form method="POST" enctype="multipart/form-data" action="<?php echo get_url(array('email','compose'))?>"
+<form method="POST" enctype="multipart/form-data" action="<?php echo get_url(array('email','compose'))?>" >
 <div class="compose">
 <table>
     <tr><td>Users:</td><td>

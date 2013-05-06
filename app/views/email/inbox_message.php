@@ -1,7 +1,6 @@
 <?php $val = $email[0];
  $profile_pic_directory = $CONFIG['site']['root'].'/uploads/profile/'.$val->from_id.'/'.$val->picture;
  $profile_pic = $CONFIG['site']['root'].'/uploads/profile/'.get_session_user()->id . '/'.get_session_user()->picture; ?>
- <div class="row">
 <table>
     <?php $action=get_input('action'); 
 	if($action == showInboxMessage){?>
@@ -32,5 +31,4 @@ $icon = $CONFIG['file'][get_file_extentions($val->attachment)];
 	<tr><th><b>Attachment:</b></th></tr>
 	<tr><th><a href="<?php echo web_root() . 'uploads/'. $val->from_id . '/' . $val->attachment;?>"><img src="<?php echo $icon; ?>" height="50" width="50"></a></th></tr>
 </table>	
-</div>  
 <?php } ?>

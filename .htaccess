@@ -1,1 +1,11 @@
 php_value display_errors 0
+php_value upload_max_filesize 8M
+
+RewriteEngine on
+
+#RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([A-Za-z0-9\_\-]+)\/([A-Za-z0-9\_\-]+)\/([0-9]+)$ index.php?controller=$1&action=$2&id=$3
+RewriteRule ^([A-Za-z0-9\_\-]+)\/([A-Za-z0-9\_\-]+)$ index.php?controller=$1&action=$2
+RewriteRule ^([A-Za-z0-9\_\-]+)$ index.php?controller=$1
