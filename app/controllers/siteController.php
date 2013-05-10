@@ -87,8 +87,8 @@ class siteController extends Controller{
 	  //exit;
 
 	  if($contact_us->insert($data_array)){
-          register_message("You have been successfully signed up.");
-      }
+          register_message("You have been successfully  contacted us");
+      } 
       $this->render('site/pages/contactus.php');
     }
     public function aboutus(){
