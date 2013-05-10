@@ -50,7 +50,7 @@ class siteController extends Controller{
 		$error=true;
 	  }	
 	  if($form['dob']['y'] == 0 && $form['dob']['m'] == 0 && $form['dob']['d'] ==0){
-	    register_message('Dob must be enter','error');
+	    register_message('Dob must be enter','info');
 		$error=true;
 	  }
       
@@ -75,6 +75,20 @@ class siteController extends Controller{
     public function contactus(){
       $this->data['window_title'] = 'Contact Us';
       $this->data['form_title'] = 'Contact Us';
+	  $form=get_input('form');
+	  $contact_us = new Contact();
+	  //print_r($contact_us);
+	  //exit;
+      $data_array= array('name'=>$form['name'],
+	  'email'=> $form['email'],
+	  'ph'=> $form['ph'],
+	  'sms'=> $form['sms']);
+	  //print_r($data_array);
+	  //exit;
+
+	  if($contact_us->insert($data_array)){
+          register_message("You have been successfully signed up.");
+      }
       $this->render('site/pages/contactus.php');
     }
     public function aboutus(){

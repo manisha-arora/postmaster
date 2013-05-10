@@ -1,0 +1,22 @@
+<?php if(is_user_logged_in()){ ?>
+<ul type="disc">
+     <li> <a  href="index.php?controller=email&action=compose">Compose</a>
+     <li> <a href="index.php?controller=email&action=inbox">Inbox</a>
+	  <li> <a href="index.php?controller=email&action=sent">sent</a>
+</ul>
+<?php } else { ?>
+<form action="index.php?controller=site&action=login" method="POST">
+<div class="z-form">
+<h3>Sign in!</h3>
+<div class="form-row">
+<label>Username:</label>
+<input type="text" name="form[username]" value="" />
+</div>
+<div class="form-row">
+<label>password:</label>
+<input type="password" name="form[password]" value="" />
+</div>
+<div class="form-button"><input type="submit" name="action" value="Login" /></div>
+</form>
+</div>
+<?php } ?>

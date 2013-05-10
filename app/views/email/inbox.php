@@ -16,20 +16,20 @@
 <div class="table">
 <form id="form_email_inbox" action="<?php echo get_url(array('email','delete'))?>" method="post">
 <table>
-  <tr>&nbsp;&nbsp;&nbsp;<select name="form[label_id]">
+  <tr><td><select name="form[label_id]">
       <option value="0">Inbox</option>
       <?php foreach($labels as $lable_object){ ?>
       <option value="<?php echo $lable_object->id; ?>"><?php echo $lable_object->name; ?></option>
       <?php } ?>
-      </select>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="submit" value="Move" name="form[action]" />&nbsp;&nbsp;&nbsp;&nbsp;
+      </select>
+        <input type="submit" value="Move" name="form[action]" />
         <input type="submit" value="Delete" name="form[action]" />
-		<hr>
-  </tr>
+		
+  </td></tr>
 </table>
 <table width="100%">
   <tr><th width="16px"><input type="checkbox" name="email_id" onChange="check_all(this)" value=""></th>
-	    <th width="24px">&nbsp;</th>
+	    <th width="24px"></th>
 		<th align="left">From</th>
 		<th align="left">Subject</th>
 		<th align="left">Date</th>
@@ -37,7 +37,7 @@
 	   <?php foreach($email as $val){?>
   <tr><td><input type="checkbox" name="form[check_id][]" value="<?php echo $val->id; ?>"></td>  
         <td><img src="<?php echo ($val->attachment)?web_root().'images/attachment.png':web_root().'images/email.png'; ?>"></td>
-		<td align="left"><a href="<?php echo get_url(array('user','viewUserInfo',$val->from_id))?>"><?php echo $val->fname. ' '. $val->lname; ?></td>
+		<td align="left"><a href="<?php echo get_url(array('user','viewUserInfo',$val->from_id))?>"><?php echo $val->fname. ' '. $val->lname; ?></a></td>
         <td align="left"><a href="<?php echo get_url(array('email','showInboxMessage',$val->id))?>"><?php echo $val->subject; ?></a></td>
         <td align="left"><?php echo $val->getFormattedTime();?></td>
   </tr>

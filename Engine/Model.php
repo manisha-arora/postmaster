@@ -22,7 +22,7 @@ abstract class Model{
 	  
           $columns = implode(",",$columns);
 	      $values = implode(",",$values);
-	  $query = "INSERT INTO {$this->table} ({$columns}) VALUES ({$values})";
+	      $query = "INSERT INTO {$this->table} ({$columns}) VALUES ({$values})";
 	  return $this->db->execute($query);
 	}
   }

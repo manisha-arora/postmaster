@@ -8,7 +8,7 @@ class emailController extends Controller{
   }
 
   public function index(){
-    $label_id = get_input('label_id',0);
+    $label_id = get_input('id',0);
     $label=new Lable();
     $label_array=$label->get(array('id' => $label_id));        
     $this->data['form_title'] = (!$label_id)?"Inbox":$label_array[0]->name;
@@ -20,6 +20,7 @@ class emailController extends Controller{
   public function searchMail(){
    $info=false;
    $form=get_input('form');
+   $this->data['form_title'] ="Resulting Mail";
    $this->data['window_title']='Search Mail';
    if(isset($form['search'])){
      if(empty($form['subject'])){

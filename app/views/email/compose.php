@@ -1,5 +1,4 @@
 <form method="POST" enctype="multipart/form-data" action="<?php echo get_url(array('email','compose'))?>">
-<div class="compose">
 <table>
     <tr><td>Users:</td><td>
      <select name="form[user_id]">
@@ -14,5 +13,4 @@
     <tr><td>Attachment:</td><td><input type="file" name="form[attachment]" /></td></tr>
     <tr><td></td><td><input type="submit" value="Send" name="form[send]" /></td></tr>
 </table> 
-</div>
 </form>

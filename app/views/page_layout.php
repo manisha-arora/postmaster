@@ -54,7 +54,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="logo">Bhargav Impex</div>
+<div class="logo"><img src="<?php echo web_root();?>images/logo/logo.jpg" /></div>
 <div class="container">
     <div class="header">
        <?php include('site/header/menu.php'); ?> 
@@ -91,7 +91,7 @@ $(document).ready(function(){
     <div class="workspace span-24 last">
       <?php if($right_sidebar): ?>
       <div class="l-h-s-content span-17">
-           <h1 class="page-hdng" style="background-color:purple;color:white;text-align:center"><?php echo $form_title; ?></h1>
+           <h1 class="page-hdng" style="background-color:skyblue;color:blue;text-align:center"><?php echo $form_title; ?></h1>
            <?php include($work_area); ?>    
         </div>
         <div class="r-h-s-content span-7 last">
