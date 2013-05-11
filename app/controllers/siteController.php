@@ -77,20 +77,34 @@ class siteController extends Controller{
       $this->data['form_title'] = 'Contact Us';
 	  $form=get_input('form');
 	  $contact_us = new Contact();
-	  //print_r($contact_us);
-	  //exit;
+	  $error=false;
+	  if(isset($form['send'])){
+        if(empty($form['name'])){
+         register_message("Name must be entered.","error");
+	      $error=true;
+	  }
+	  if(empty($form['email'])){
+         register_message("Email must be given.","error");
+	      $error=true;
+	  }
+	  if(empty($form['phone'])){
+         register_message("phone no. must be given.","error");
+	      $error=true;
+	  }
+	  if($error){
+      forward(get_url(array('site','contactus')));
+	  }
       $data_array= array('name'=>$form['name'],
 	  'email'=> $form['email'],
-	  'ph'=> $form['ph'],
+	  'ph'=> $form['phone'],
 	  'sms'=> $form['sms']);
-	  //print_r($data_array);
-	  //exit;
-
 	  if($contact_us->insert($data_array)){
           register_message("You have been successfully  contacted us");
-      } 
+      }
+	 }
       $this->render('site/pages/contactus.php');
     }
+	
     public function aboutus(){
       $this->data['window_title'] = 'About Us';
       $this->data['form_title'] = 'About Us';

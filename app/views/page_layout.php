@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo web_root();?>css/prop.css" media="screen, projection" />
 <script type="text/javascript" src="<?php echo web_root();?>js/jquery-1.4.4.min.js"></script>
 <link rel="stylesheet" href="<?php echo web_root();?>css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+
 <script src="<?php echo web_root();?>js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 function slideSwitch() {
