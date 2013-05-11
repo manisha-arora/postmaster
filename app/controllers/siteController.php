@@ -13,7 +13,7 @@ class siteController extends Controller{
          'username' => $form['username'], 
          'password' => md5($form['password'])
       );
-      $user_array = $user->get($data_array);//$user->findUser($form);
+      $user_array = $user->get($data_array);
       $user_object = $user_array[0];
     if($user_object->id){
        $_SESSION['is_user_logged_in'] = serialize($user_object);
@@ -98,9 +98,11 @@ class siteController extends Controller{
 	  'email'=> $form['email'],
 	  'ph'=> $form['phone'],
 	  'sms'=> $form['sms']);
-	  if($contact_us->insert($data_array)){
+	  
+	  if($contact_us->add($data_array)){
           register_message("You have been successfully  contacted us");
       }
+	  forward(get_url(array('site','contactus')));
 	 }
       $this->render('site/pages/contactus.php');
     }
@@ -115,11 +117,5 @@ class siteController extends Controller{
       $this->data['form_title'] = 'Products we are dealing in!';
       $this->data['right_sidebar'] = null;
       $this->render('site/pages/products.php');
-    }
-    public function clients(){
-      $this->data['window_title'] = 'Our Clients';
-      $this->data['form_title'] = 'Our Clients';
-      $this->data['right_sidebar'] = null;
-      $this->render('site/pages/clients.php');
     }
 }
