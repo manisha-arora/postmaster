@@ -4,7 +4,7 @@
    <div class="login">
      <div class="span-2"><?php $profile_pic_directory = $CONFIG['site']['root'].'/uploads/profile/'.get_session_user()->id.'/'.get_session_user()->picture;?>
 	
-	  <img src="<?php echo (get_session_user()->picture && file_exists($profile_pic_directory))? web_root().'/uploads/profile/'.get_session_user()->id .'/'. get_session_user()->picture:web_root().'<?php echo web_root(); ?>/images/noimage.jpeg'; ?>" width="50" height="50" />
+	  <img src="<?php echo (get_session_user()->picture && file_exists($profile_pic_directory))? web_root().'/uploads/profile/'.get_session_user()->id .'/'. get_session_user()->picture:web_root().'images/noimage.jpg'; ?>" width="50" height="50" />
 	  </div>
 	  
 	  <div class="span-3 last"><a href="<?php echo get_url(array('user','viewuserinfo',get_session_user()->id)) ?>"><?php echo get_session_user()->username; ?></a> <br />
